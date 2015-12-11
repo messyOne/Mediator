@@ -1,0 +1,26 @@
+{
+    "name": "messyOne/mediator",
+    "description": "Simple event mediator for delegating events.",
+    "homepage": "https://github.com/messyOne/Mediator",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Daniel Weiss",
+            "email": "mail@weiss-daniel.de",
+            "role": "Software Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "messyOne\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.6.0"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "@stable"
+	}
+}
