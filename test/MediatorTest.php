@@ -1,5 +1,5 @@
 <?php
-use messyOne\Mediator\Mediator;
+use messyOne\Mediator;
 
 /**
  * Test the Event Mediator logic
