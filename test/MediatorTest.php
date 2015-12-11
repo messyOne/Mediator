@@ -1,6 +1,6 @@
 <?php
 
-namespace messyOne;
+use messyOne\Mediator;
 
 /**
  * Test the Event Mediator logic
