@@ -1,7 +1,7 @@
 {
     "name": "messyOne/mediator",
     "description": "Simple event mediator for delegating events.",
-    "homepage": "https://github.com/messyOne/mediator",
+    "homepage": "https://github.com/messyOne/Mediator",
     "type": "library",
     "license": "Apache-2.0",
     "authors": [
