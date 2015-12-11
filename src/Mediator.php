@@ -1,6 +1,6 @@
 <?php
 
-namespace messyOne\Mediator;
+namespace messyOne;
 
 use Closure;
 use InvalidArgumentException;
