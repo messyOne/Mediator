@@ -1,4 +1,4 @@
-Travis build: [![Build Status](https://travis-ci.org/messyOne/mediator.svg?branch=master)](https://travis-ci.org/messyOne/mediator)
+[![Build Status](https://travis-ci.org/messyOne/mediator.svg?branch=master)](https://travis-ci.org/messyOne/mediator)
 
 # mediator
 Simple event mediator for PHP. Use it if you need a centralized place to handle your events. 
