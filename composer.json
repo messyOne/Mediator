@@ -1,5 +1,5 @@
 {
-    "name": "messyOne/mediator",
+    "name": "messy-one/mediator",
     "description": "Simple event mediator for delegating events.",
     "homepage": "https://github.com/messyOne/Mediator",
     "type": "library",
