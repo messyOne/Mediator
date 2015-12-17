@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/messyOne/Mediator.svg?branch=master)](https://travis-ci.org/messyOne/Mediator)
+[![Build Status](https://travis-ci.org/messyOne/mediator.svg?branch=master)](https://travis-ci.org/messyOne/mediator)
 
 # Mediator
 Simple event mediator for PHP. Use it if you need a centralized place to handle your events. 
@@ -9,13 +9,37 @@ Simple event mediator for PHP. Use it if you need a centralized place to handle 
    // create an instance
    $mediator = new Mediator();
    
+   // create an class implementing the EventData interface
+   class ConcreteEventData implements EventData
+   {
+       /** @var string */
+       private $foo;
+   
+       /**
+        * @param string $foo
+        */
+       public function __construct($foo)
+       {
+           $this->foo = $foo;
+       }
+   
+       /**
+        * @return string
+        */
+       public function getFoo()
+       {
+           return $this->foo;
+       }
+   }
+
+   
    // attach an event
-   $mediator->attach('unique:event', function ($event, $param1, $params2) {
-      // do whatever need to do
+   $mediator->attach('unique:event', function ($event, ConcreteEventData $data) {
+      // do whatever you have to do with $data->getFoo()
    });
    
    // somewhere else in the code you can trigger the event and send the data to the callback function
-   $mediator->trigger('unique:event', 'value_for_param1', 'value_for_params2');
+   $mediator->trigger('unique:event', new ConcreteEventData('foo'));
    
 ```
 ### Additional information
