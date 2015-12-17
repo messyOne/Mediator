@@ -33,11 +33,11 @@ class Mediator
     }
 
     /**
-     * @param string $event
-     * @param mixed  $data
+     * @param string    $event
+     * @param EventData $data
      * @return bool
      */
-    public function trigger($event, ...$data)
+    public function trigger($event, EventData $data)
     {
         if (!is_string($event)) {
             throw new InvalidArgumentException();
@@ -50,7 +50,7 @@ class Mediator
         }
 
         foreach (self::$events[$event] as $callback) {
-            $callback($event, ...$data);
+            $callback($event, $data);
         }
 
         return true;

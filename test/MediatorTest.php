@@ -1,4 +1,6 @@
 <?php
+
+use messyOne\EventData;
 use messyOne\Mediator;
 
 /**
@@ -15,15 +17,18 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
         $testEvent = '';
         $testData = null;
 
-        $mediator->attach('test:event', function ($event, $data) use (&$testEvent, &$testData) {
+        $mediator->attach('test:event', function ($event, EventData $data) use (&$testEvent, &$testData) {
             $testEvent = $event;
             $testData = $data;
         });
 
-        $mediator->trigger('test:event', 'foo');
+        $data = $this->getMockForAbstractClass(EventData::class);
+
+        /** @var EventData $data */
+        $mediator->trigger('test:event', $data);
 
         $this->assertEquals('test:event', $testEvent);
-        $this->assertEquals('foo', $testData);
+        $this->assertEquals($data, $testData);
     }
 
     /**
@@ -58,32 +63,6 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
                 },
             ],
         ], $mediator::getEvents());
-    }
-
-    /**
-     * Test callback with multiple arguments
-     */
-    public function testEventCallbackWithMultipleArguments()
-    {
-        $mediator = new Mediator();
-        $testEvent = '';
-        $testData = [];
-
-        $mediator->attach('test:event', function ($event, $param1, $param2) use (&$testEvent, &$testData) {
-            $testEvent = $event;
-            $testData = [
-                $param1,
-                $param2
-            ];
-        });
-
-        $mediator->trigger('test:event', 'param1', 'param2');
-
-        $this->assertEquals('test:event', $testEvent);
-        $this->assertEquals([
-            'param1',
-            'param2',
-        ], $testData);
     }
 
     /**
