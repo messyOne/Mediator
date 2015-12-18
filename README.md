@@ -47,3 +47,6 @@ Since the events are saved in a static variable you might need to delete them (f
 ```
     Mediator::reset();
 ```
+
+### TODO 
+- Add group listening: listen on "main_event:*"  
