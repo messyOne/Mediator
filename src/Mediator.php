@@ -34,10 +34,10 @@ class Mediator
 
     /**
      * @param string    $event
-     * @param EventData $data
+     * @param EventDataInterface $data
      * @return bool
      */
-    public function trigger($event, EventData $data)
+    public function trigger($event, EventDataInterface $data)
     {
         if (!is_string($event)) {
             throw new InvalidArgumentException();

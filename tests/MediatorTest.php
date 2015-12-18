@@ -1,6 +1,6 @@
 <?php
 
-use messyOne\EventData;
+use messyOne\EventDataInterface;
 use messyOne\Mediator;
 
 /**
@@ -17,14 +17,14 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
         $testEvent = '';
         $testData = null;
 
-        $mediator->attach('test:event', function ($event, EventData $data) use (&$testEvent, &$testData) {
+        $mediator->attach('test:event', function ($event, EventDataInterface $data) use (&$testEvent, &$testData) {
             $testEvent = $event;
             $testData = $data;
         });
 
-        $data = $this->getMockForAbstractClass(EventData::class);
+        $data = $this->getMockForAbstractClass(EventDataInterface::class);
 
-        /** @var EventData $data */
+        /** @var EventDataInterface $data */
         $mediator->trigger('test:event', $data);
 
         $this->assertEquals('test:event', $testEvent);

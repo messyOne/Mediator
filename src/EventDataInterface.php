@@ -5,7 +5,7 @@ namespace messyOne;
 /**
  * Interface EventData
  */
-interface EventData
+interface EventDataInterface
 {
 
 }
