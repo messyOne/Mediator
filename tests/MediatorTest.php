@@ -9,7 +9,7 @@ use messyOne\Mediator;
 class MediatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test attaching events and trigger them
+     * Test attaching an event and trigger it
      */
     public function testAttachAndTriggerEvent()
     {
@@ -28,6 +28,35 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
         $mediator->trigger('test:event', $data);
 
         $this->assertEquals('test:event', $testEvent);
+        $this->assertEquals($data, $testData);
+    }
+
+    /**
+     * Test attaching multiple events and trigger them
+     */
+    public function testAttachEventsAndTriggerEvent()
+    {
+        $mediator = new Mediator();
+        $testEvent = '';
+        $testData = null;
+
+        $mediator->attachMultiple(['test:event1', 'test:event2'], function ($event, EventDataInterface $data) use (&$testEvent, &$testData) {
+            $testEvent = $event;
+            $testData = $data;
+        });
+
+        $data = $this->getMockForAbstractClass(EventDataInterface::class);
+
+        /** @var EventDataInterface $data */
+        $mediator->trigger('test:event1', $data);
+
+        $this->assertEquals('test:event1', $testEvent);
+        $this->assertEquals($data, $testData);
+
+        /** @var EventDataInterface $data */
+        $mediator->trigger('test:event2', $data);
+
+        $this->assertEquals('test:event2', $testEvent);
         $this->assertEquals($data, $testData);
     }
 

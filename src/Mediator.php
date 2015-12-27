@@ -33,6 +33,17 @@ class Mediator
     }
 
     /**
+     * @param array $events
+     * @param Closure $callback
+     */
+    public function attachMultiple(array $events, Closure $callback)
+    {
+        foreach ($events as $event) {
+            $this->attach($event, $callback);
+        }
+    }
+
+    /**
      * @param string    $event
      * @param EventDataInterface $data
      * @return bool
