@@ -61,7 +61,7 @@ class Mediator
         }
 
         foreach (self::$events[$event] as $callback) {
-            $callback($event, $data);
+            $callback($data, $event);
         }
 
         return true;

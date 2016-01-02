@@ -17,7 +17,7 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
         $testEvent = '';
         $testData = null;
 
-        $mediator->attach('test:event', function ($event, EventDataInterface $data) use (&$testEvent, &$testData) {
+        $mediator->attach('test:event', function (EventDataInterface $data, $event) use (&$testEvent, &$testData) {
             $testEvent = $event;
             $testData = $data;
         });
@@ -40,7 +40,7 @@ class MediatorTest extends \PHPUnit_Framework_TestCase
         $testEvent = '';
         $testData = null;
 
-        $mediator->attachMultiple(['test:event1', 'test:event2'], function ($event, EventDataInterface $data) use (&$testEvent, &$testData) {
+        $mediator->attachMultiple(['test:event1', 'test:event2'], function (EventDataInterface $data, $event) use (&$testEvent, &$testData) {
             $testEvent = $event;
             $testData = $data;
         });
